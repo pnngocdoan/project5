@@ -12,16 +12,15 @@ const NewsInfo = ({title, date, image}) => {
         getNews().catch(console.error);
     }, [title]);
     return (
-        <div>
+        <div className="news-card">
             {news ? (
-                <li className="main-list" key={title}>
+                <li key={title}>
                     <img   
                         className="images"
                         src={image}
                     />
-                    {title}
-                    <span className="tab"></span>
-                    - {date}
+                    <h4>{title}</h4>
+                    <h5>{date}</h5>
                 </li>
             ) : null}
         </div>

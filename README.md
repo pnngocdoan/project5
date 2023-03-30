@@ -15,17 +15,13 @@ The following **required** functionality is completed:
 - [x] **The app dashboard includes at least three summary statistics about the data such as**
   - [x] *insert details*
 - [x] **A search bar allows the user to search for an item in the fetched data**
-- [ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
 
 The following **optional** features are implemented:
 
-- [ ] Multiple filters can be applied simultaneously
-- [ ] Filters use different input types such as a text input, a selection, or a slider
+- [x] Multiple filters can be applied simultaneously
+- [x] Filters use different input types such as a text input, a selection, or a slider
 - [ ] The user can enter specific bounds for filter values
-
-The following **additional** features are implemented:
-
-* [ ] List anything else that you added to improve the site's functionality!
 
 ## Video Walkthrough
 
@@ -34,7 +30,7 @@ Here's a walkthrough of implemented user stories:
 <img src='./Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with Licecap 
+GIF created with LICEcap 
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -42,7 +38,7 @@ GIF created with Licecap
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I have a hard time with figuring out the search bar and how to apply multiple filters.
 
 ## License
 
