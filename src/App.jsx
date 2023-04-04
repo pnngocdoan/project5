@@ -9,24 +9,35 @@ function App() {
   const [list, setList] = useState(null);
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [categorySelected, setCategorySelected] = useState('all');
-  const [dateSelected, setDateSelected] = useState(new Date);
-  const categories = ['business', 'entertainment', 'general', 'health', 'science', 'technology', 'all']
-
+  const [categorySelected, setCategorySelected] = useState('title');
+  const categories = ['title', 'description', 'content']
   useEffect(() => {
-    const searchNews = (searchInput, categorySelected, dateSelected) => {
-      const filteredData = list.articles.filter(
-        article => article.title.includes(searchInput)
-        && article.category === categorySelected 
-        );
+    const searchNews = (searchInput, categorySelected) => {
+      let filteredData = [];
+      if (categorySelected == 'title') {
+        filteredData = list.articles.filter(
+              article => article.title.includes(searchInput)
+              );
+      }
+      else if (categorySelected == 'description') {
+        filteredData = list.articles.filter(
+              article => article.description.includes(searchInput)
+              );
+      }
+      else {
+        filteredData = list.articles.filter(
+              article => article.content.includes(searchInput)
+              );
+      }
       setFilteredResults(filteredData);
+      console.log(filteredData);
   }
-    if (list !== null) searchNews(searchInput, categorySelected, dateSelected);
-  }, [searchInput, categorySelected, dateSelected, list]);
+    if (list !== null) searchNews(searchInput, categorySelected);
+  }, [searchInput, categorySelected, list]);
 
   useEffect(() => {
     const fetchAllLatestNews = async() => {
-      const response = await fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=" + API_KEY);
+      const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=` + API_KEY);
       const json = await response.json();
       setList(json);
     }
@@ -51,17 +62,12 @@ function App() {
           />
         </div>
         <div className="category-search">
-            <label>Catergory: </label>
+            <label>Search in: </label>
             <select id="categories" value={categorySelected} onChange={
               (checked) => setCategorySelected(checked.target.value)}>
                 {categories.map((choice) => 
                 (<option key={choice}>{choice}</option>))}
             </select>
-        </div>
-        <div className="date-search">
-            <label>Date: </label>
-            <DatePicker selected={dateSelected} onChange={(checked) => {
-              setDateSelected(checked)}} />
         </div>
       </div>
 

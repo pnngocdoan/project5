@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 const NewsInfo = ({title, date, image}) => {
@@ -15,12 +16,14 @@ const NewsInfo = ({title, date, image}) => {
         <div className="news-card">
             {news ? (
                 <li key={title}>
-                    <img   
-                        className="images"
-                        src={image}
-                    />
-                    <h4>{title}</h4>
-                    <h5>{date}</h5>
+                    <Link to={`/newsDetails/${title}`} key={title}>
+                        <img   
+                            className="images"
+                            src={image}
+                        />
+                        <h4>{title}</h4>
+                        <h5>{date}</h5>
+                    </Link>
                 </li>
             ) : null}
         </div>
