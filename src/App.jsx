@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import NewsInfo from "./Components/newsInfo"
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
+import Chart from "./Components/chart";
 
 function App() {
   const [list, setList] = useState(null);
@@ -73,6 +73,9 @@ function App() {
 
       <div className='dashboard'>
         <h1>My Latest News</h1>
+        {list ? 
+        <Chart articles={list.articles}/> 
+        : null}
         <ul className="news-container">
           {searchInput.length > 0 
           ?
